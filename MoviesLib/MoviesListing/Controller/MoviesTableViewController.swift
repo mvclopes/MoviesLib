@@ -28,8 +28,9 @@ class MoviesTableViewController: UITableViewController {
         do {
             let data = try Data(contentsOf: jsonUrl)
             let jsonDecoder = JSONDecoder()
-            // Definindo estratégia de decoding: converter snake case para camel case
+            /* Definindo estratégia de decoding: converter snake case para camel case
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+            */
             movies = try jsonDecoder.decode([Movie].self, from: data)
             movies.forEach { print($0.title) }
         } catch {
@@ -52,12 +53,11 @@ class MoviesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
         
         let movie = movies[indexPath.row]
         
-        cell.textLabel?.text = movie.title
-        cell.detailTextLabel?.text = movie.duration
+        cell.configure(with: movie)
 
         return cell
     }

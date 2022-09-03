@@ -41,7 +41,7 @@ class MovieDetailViewController: UIViewController {
             labelTitle.text = movie.title
             labelCategories.text = movie.categories
             labelDuration.text = movie.duration
-            labelRating.text = "\(movie.rating)"
+            labelRating.text = movie.ratingFormatted
             textViewSummary.text = movie.summary
             imageViewPoster.image = UIImage(named: movie.image)
         }
