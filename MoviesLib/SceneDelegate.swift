@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  MoviesLib
 //
-//  Created by Usuário Convidado on 30/08/22.
+//  Created by Matheus Lopes on 30/08/22.
 //
 
 import UIKit
