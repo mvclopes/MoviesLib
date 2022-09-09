@@ -6,10 +6,28 @@
 //
 
 import UIKit
+import CoreData
 
 class MoviesTableViewController: UITableViewController {
     
-    var movies: [Movie] = []
+    private lazy var fetchedResultsController: NSFetchedResultsController<Movie> = {
+        let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
+    
+    private let labelNoMovies: UILabel = {
+        let label = UILabel()
+        label.font = .italicSystemFont(ofSize: 14)
+        label.text = "Sem filmes cadastrados"
+        label.textAlignment = .center
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,24 +36,18 @@ class MoviesTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let movieViewController = segue.destination as? MovieDetailViewController,
-              let row = tableView.indexPathForSelectedRow?.row else { return }
+              let indexPath = tableView.indexPathForSelectedRow else { return }
         
-        movieViewController.movie = movies[row]
+        movieViewController.movie = fetchedResultsController.object(at: indexPath)
     }
     
     private func loadMovies() {
-        guard let jsonUrl = Bundle.main.url(forResource: "movies", withExtension: "json") else { return }
         do {
-            let data = try Data(contentsOf: jsonUrl)
-            let jsonDecoder = JSONDecoder()
-            /* Definindo estratégia de decoding: converter snake case para camel case
-            jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-            */
-            movies = try jsonDecoder.decode([Movie].self, from: data)
-            movies.forEach { print($0.title) }
+            try fetchedResultsController.performFetch()
         } catch {
             print(error)
         }
+        
     }
 
     // MARK: - Table view data source
@@ -49,13 +61,15 @@ class MoviesTableViewController: UITableViewController {
     // Número de células dentro de uma seção da tableView
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return movies.count
+        let count = fetchedResultsController.fetchedObjects?.count ?? 0
+        tableView.backgroundView = count == 0 ? labelNoMovies : nil
+        return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
         
-        let movie = movies[indexPath.row]
+        let movie = fetchedResultsController.object(at: indexPath)
         
         cell.configure(with: movie)
 
@@ -71,17 +85,15 @@ class MoviesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let movie = fetchedResultsController.object(at: indexPath)
+             
+            try? context.save()
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -108,4 +120,10 @@ class MoviesTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension MoviesTableViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.reloadData()
+    }
 }

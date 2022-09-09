@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="movie" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="categories" inverseEntity="Movie"/>
+    </entity>
+    <entity name="Movie" representedClassName="Movie" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="rating" optional="YES" attributeType="Double" minValueString="0" maxValueString="10" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="movie" inverseEntity="Category"/>
+    </entity>
+    <elements>
+        <element name="Movie" positionX="-487.40087890625" positionY="-265.4898071289062" width="128" height="119"/>
+        <element name="Category" positionX="-97.4639892578125" positionY="43.34918212890625" width="128" height="59"/>
+    </elements>
+</model>
