@@ -10,7 +10,7 @@ import CoreData
 
 class CategoriesTableViewController: UITableViewController {
 
-    
+    var categories: [Category] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,28 +19,83 @@ class CategoriesTableViewController: UITableViewController {
 
     private func loadCategories() {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            categories = try context.fetch(fetchRequest)
+            tableView.reloadData()
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func showCategoryAlert(for category: Category? = nil) {
+        let title = category == nil ? "Adicionar" : "Editar"
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.placeholder = "Nome da categoria"
+            textField.text = category?.name
+        }
+        
+        let okAction = UIAlertAction(title: title, style: .default) { _ in
+            let category = category ?? Category(context: self.context)
+            category.name = alert.textFields?.first?.text
+            try? self.context.save()
+            self.loadCategories()
+        }
+        alert.addAction(okAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func add(_ sender: UIBarButtonItem) {
-    
+        showCategoryAlert()
     }
     
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return categories.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = categories[indexPath.row].name
         return cell
     }
-    */
 
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
+            let category = self.categories[indexPath.row]
+            self.showCategoryAlert(for: category)
+            completionHandler(true)
+        }
+        editAction.backgroundColor = .systemBlue
+        editAction.image = UIImage(systemName: "pencil")
+        return UISwipeActionsConfiguration(actions: [editAction])
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { action, view, completionHandler in
+            let category = self.categories[indexPath.row]
+            
+            self.context.delete(category)
+            try? self.context.save()
+            self.categories.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = .systemRed
+        deleteAction.image = UIImage(systemName: "trash")
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

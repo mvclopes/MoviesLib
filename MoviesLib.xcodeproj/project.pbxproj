@@ -127,7 +127,7 @@
 				AC94C11328C2B97E008E7105 /* Files */,
 				AC1BE5BC28CAA9360043C010 /* MovieForm */,
 				AC94C11B28C2C652008E7105 /* MoviesListing */,
-				AC94C11428C2B9AE008E7105 /* MovieVisualization */,
+				AC94C11428C2B9AE008E7105 /* MovieDetails */,
 				AC94C11628C2BABB008E7105 /* Shared */,
 				AC649DE528BEC41800407772 /* LaunchScreen.storyboard */,
 				AC649DE028BEC41600407772 /* Main.storyboard */,
@@ -146,12 +146,12 @@
 			path = Files;
 			sourceTree = "<group>";
 		};
-		AC94C11428C2B9AE008E7105 /* MovieVisualization */ = {
+		AC94C11428C2B9AE008E7105 /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
 				AC94C11528C2B9D6008E7105 /* Controller */,
 			);
-			path = MovieVisualization;
+			path = MovieDetails;
 			sourceTree = "<group>";
 		};
 		AC94C11528C2B9D6008E7105 /* Controller */ = {
