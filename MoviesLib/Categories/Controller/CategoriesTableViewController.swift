@@ -8,9 +8,20 @@
 import UIKit
 import CoreData
 
+protocol CategoriesDelegate: AnyObject {
+    func setSelectedCategories(_ categories: Set<Category>)
+}
+
 class CategoriesTableViewController: UITableViewController {
 
     var categories: [Category] = []
+    var selectedCategories: Set<Category> = [] {
+        didSet {
+            delegate?.setSelectedCategories(selectedCategories)
+        }
+    }
+
+    weak var delegate: CategoriesDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +76,9 @@ class CategoriesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = categories[indexPath.row].name
+        let category = categories[indexPath.row]
+        cell.textLabel?.text = category.name
+        cell.accessoryType = selectedCategories.contains(category) ? .checkmark : .none
         return cell
     }
 
@@ -88,12 +101,26 @@ class CategoriesTableViewController: UITableViewController {
             try? self.context.save()
             self.categories.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.selectedCategories.remove(category)
             
             completionHandler(true)
         }
         deleteAction.backgroundColor = .systemRed
         deleteAction.image = UIImage(systemName: "trash")
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = categories[indexPath.row]
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.accessoryType == UITableViewCell.AccessoryType.none {
+            cell?.accessoryType = .checkmark
+            selectedCategories.insert(category)
+        } else {
+            cell?.accessoryType = .none
+            selectedCategories.remove(category)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     /*

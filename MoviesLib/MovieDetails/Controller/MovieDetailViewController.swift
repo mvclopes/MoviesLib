@@ -46,12 +46,16 @@ class MovieDetailViewController: UIViewController {
     private func setupUI() {
         if let movie = movie {
             labelTitle.text = movie.title
-//            labelCategories.text = movie.categories
             labelDuration.text = movie.duration
             labelRating.text = movie.ratingFormatted
             textViewSummary.text = movie.summary
             if let image = movie.image {
                 imageViewPoster.image = UIImage(data: image)
+            }
+            if let categories = movie.categories as? Set<Category> {
+                labelCategories.text = categories.compactMap({ $0.name })
+                    .sorted()
+                    .joined(separator: " | ")
             }
             
         }
