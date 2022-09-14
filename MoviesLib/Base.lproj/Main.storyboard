@@ -483,6 +483,54 @@
             </objects>
             <point key="canvasLocation" x="1978.4000000000001" y="91.625615763546804"/>
         </scene>
+        <!--Configurações-->
+        <scene sceneID="vmd-nn-BoC">
+            <objects>
+                <viewController id="Hth-0s-9Qa" customClass="SettingsViewController" customModule="MoviesLib" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ysx-Hz-MQW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="res-sk-gl1">
+                                <rect key="frame" x="16" y="156" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pco-cC-Hh6">
+                                <rect key="frame" x="155" y="221" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeAutoPlay:" destination="Hth-0s-9Qa" eventType="valueChanged" id="vVK-KO-AEO"/>
+                                </connections>
+                            </switch>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OH6-tG-2Os">
+                                <rect key="frame" x="16" y="282" width="343" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Branco"/>
+                                    <segment title="Azul"/>
+                                    <segment title="Amarelo"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeColor:" destination="Hth-0s-9Qa" eventType="valueChanged" id="1e5-U0-FFR"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FgU-kz-n4C"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Configurações" image="settings" id="TSD-T0-vJm"/>
+                    <connections>
+                        <outlet property="segmentedControlColor" destination="OH6-tG-2Os" id="A2g-yS-d5w"/>
+                        <outlet property="switchAutoPlay" destination="pco-cC-Hh6" id="OUb-ow-mgl"/>
+                        <outlet property="textFieldCategory" destination="res-sk-gl1" id="9uK-tc-7nx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bZa-MR-Gsb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1936.8" y="861.57635467980299"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cuN-wh-MHo">
             <objects>
@@ -495,6 +543,7 @@
                     <connections>
                         <segue destination="IlR-1K-yNu" kind="relationship" relationship="viewControllers" id="4tb-dI-XIj"/>
                         <segue destination="puL-wp-LzC" kind="relationship" relationship="viewControllers" id="BFN-JZ-V1B"/>
+                        <segue destination="Hth-0s-9Qa" kind="relationship" relationship="viewControllers" id="nhu-Wd-AVm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTA-Z1-jDK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -510,6 +559,7 @@
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="movies" width="22" height="22"/>
         <image name="play" width="53" height="53"/>
+        <image name="settings" width="22" height="22"/>
         <image name="toystory3" width="400" height="330"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

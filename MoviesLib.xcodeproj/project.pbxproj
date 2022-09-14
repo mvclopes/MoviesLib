@@ -23,6 +23,8 @@
 		AC94C11E28C2C754008E7105 /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94C11D28C2C754008E7105 /* MoviesTableViewController.swift */; };
 		ACBAE9A828D148A400EB74BB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBAE9A728D148A400EB74BB /* MapViewController.swift */; };
 		ACBAE9AB28D160D100EB74BB /* ItunesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBAE9AA28D160D100EB74BB /* ItunesResult.swift */; };
+		ACBAE9AF28D167C700EB74BB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBAE9AE28D167C700EB74BB /* SettingsViewController.swift */; };
+		ACBAE9B128D16C1100EB74BB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACBAE9B028D16C1100EB74BB /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		AC94C11D28C2C754008E7105 /* MoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
 		ACBAE9A728D148A400EB74BB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		ACBAE9AA28D160D100EB74BB /* ItunesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesResult.swift; sourceTree = "<group>"; };
+		ACBAE9AE28D167C700EB74BB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		ACBAE9B028D16C1100EB74BB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 				AC1BE5BC28CAA9360043C010 /* MovieForm */,
 				AC94C11B28C2C652008E7105 /* MoviesListing */,
 				AC94C11428C2B9AE008E7105 /* MovieDetails */,
+				ACBAE9AC28D167A900EB74BB /* Settings */,
 				AC94C11628C2BABB008E7105 /* Shared */,
 				AC649DE528BEC41800407772 /* LaunchScreen.storyboard */,
 				AC649DE028BEC41600407772 /* Main.storyboard */,
@@ -147,6 +152,7 @@
 			children = (
 				AC94C11128C2B90A008E7105 /* movies.json */,
 				AC1BE5C528CAAD980043C010 /* MoviesLib.xcdatamodeld */,
+				ACBAE9B028D16C1100EB74BB /* Settings.bundle */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -225,6 +231,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		ACBAE9AC28D167A900EB74BB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				ACBAE9AD28D167B400EB74BB /* Controller */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		ACBAE9AD28D167B400EB74BB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ACBAE9AE28D167C700EB74BB /* SettingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,6 +307,7 @@
 			files = (
 				AC649DE728BEC41800407772 /* LaunchScreen.storyboard in Resources */,
 				AC649DE428BEC41800407772 /* Assets.xcassets in Resources */,
+				ACBAE9B128D16C1100EB74BB /* Settings.bundle in Resources */,
 				AC94C11228C2B90A008E7105 /* movies.json in Resources */,
 				AC649DE228BEC41600407772 /* Main.storyboard in Resources */,
 			);
@@ -307,6 +330,7 @@
 				AC1BE5C928CABA880043C010 /* ViewController+Context.swift in Sources */,
 				ACBAE9AB28D160D100EB74BB /* ItunesResult.swift in Sources */,
 				AC649DDD28BEC41600407772 /* SceneDelegate.swift in Sources */,
+				ACBAE9AF28D167C700EB74BB /* SettingsViewController.swift in Sources */,
 				AC1BE5C728CAAD980043C010 /* MoviesLib.xcdatamodeld in Sources */,
 				AC1BE5C428CAAA760043C010 /* MovieFormViewController.swift in Sources */,
 			);
