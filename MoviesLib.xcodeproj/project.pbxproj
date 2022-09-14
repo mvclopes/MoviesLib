@@ -22,6 +22,7 @@
 		AC94C11228C2B90A008E7105 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = AC94C11128C2B90A008E7105 /* movies.json */; };
 		AC94C11E28C2C754008E7105 /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94C11D28C2C754008E7105 /* MoviesTableViewController.swift */; };
 		ACBAE9A828D148A400EB74BB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBAE9A728D148A400EB74BB /* MapViewController.swift */; };
+		ACBAE9AB28D160D100EB74BB /* ItunesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBAE9AA28D160D100EB74BB /* ItunesResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		AC94C11128C2B90A008E7105 /* movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		AC94C11D28C2C754008E7105 /* MoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
 		ACBAE9A728D148A400EB74BB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		ACBAE9AA28D160D100EB74BB /* ItunesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		AC94C11428C2B9AE008E7105 /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
+				ACBAE9A928D160AA00EB74BB /* Model */,
 				AC94C11528C2B9D6008E7105 /* Controller */,
 			);
 			path = MovieDetails;
@@ -212,6 +215,14 @@
 				ACBAE9A728D148A400EB74BB /* MapViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		ACBAE9A928D160AA00EB74BB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACBAE9AA28D160D100EB74BB /* ItunesResult.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +305,7 @@
 				AC1D10D728C2E6D000DDE8C2 /* Movie+Utils.swift in Sources */,
 				AC94C11E28C2C754008E7105 /* MoviesTableViewController.swift in Sources */,
 				AC1BE5C928CABA880043C010 /* ViewController+Context.swift in Sources */,
+				ACBAE9AB28D160D100EB74BB /* ItunesResult.swift in Sources */,
 				AC649DDD28BEC41600407772 /* SceneDelegate.swift in Sources */,
 				AC1BE5C728CAAD980043C010 /* MoviesLib.xcdatamodeld in Sources */,
 				AC1BE5C428CAAA760043C010 /* MovieFormViewController.swift in Sources */,
