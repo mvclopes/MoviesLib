@@ -21,6 +21,7 @@
 		AC649DE728BEC41800407772 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC649DE528BEC41800407772 /* LaunchScreen.storyboard */; };
 		AC94C11228C2B90A008E7105 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = AC94C11128C2B90A008E7105 /* movies.json */; };
 		AC94C11E28C2C754008E7105 /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC94C11D28C2C754008E7105 /* MoviesTableViewController.swift */; };
+		ACBAE9A828D148A400EB74BB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBAE9A728D148A400EB74BB /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		AC649DE828BEC41800407772 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC94C11128C2B90A008E7105 /* movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		AC94C11D28C2C754008E7105 /* MoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
+		ACBAE9A728D148A400EB74BB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				AC649DDC28BEC41600407772 /* SceneDelegate.swift */,
 				AC1BE5BF28CAA96A0043C010 /* Categories */,
 				AC94C11328C2B97E008E7105 /* Files */,
+				ACBAE9A428D1486B00EB74BB /* Map */,
 				AC1BE5BC28CAA9360043C010 /* MovieForm */,
 				AC94C11B28C2C652008E7105 /* MoviesListing */,
 				AC94C11428C2B9AE008E7105 /* MovieDetails */,
@@ -191,6 +194,22 @@
 			isa = PBXGroup;
 			children = (
 				AC94C11D28C2C754008E7105 /* MoviesTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ACBAE9A428D1486B00EB74BB /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				ACBAE9A628D1488B00EB74BB /* Controller */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		ACBAE9A628D1488B00EB74BB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ACBAE9A728D148A400EB74BB /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -267,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACBAE9A828D148A400EB74BB /* MapViewController.swift in Sources */,
 				AC649DDF28BEC41600407772 /* MovieDetailViewController.swift in Sources */,
 				AC649DDB28BEC41600407772 /* AppDelegate.swift in Sources */,
 				AC1D10D428C2E40B00DDE8C2 /* MovieTableViewCell.swift in Sources */,

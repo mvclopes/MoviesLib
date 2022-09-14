@@ -21,7 +21,7 @@ class MovieFormViewController: UIViewController {
     var movie: Movie?
     var selectedCategories: Set<Category> = [] {
         didSet {
-            if selectedCategories.isEmpty{
+            if selectedCategories.isEmpty {
                 labelCategories.text = "Adicionar categorias"
             } else {
                 labelCategories.text = selectedCategories.compactMap({ $0.name })
@@ -50,7 +50,6 @@ class MovieFormViewController: UIViewController {
             textFieldDuration.text = movie.duration
             textViewSummary.text = movie.summary
             buttonSave.setTitle("Atualizar", for: .normal)
-//            labelCategories.text = ""
             if let image = movie.image {
                 imageViewPoster.image = UIImage(data: image)
             }
